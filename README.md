@@ -1,57 +1,63 @@
-# AI Dokumentový Asistent (RAG)
+📄 AI Dokumentový Asistent (RAG)
 
-Jednoduchá AI aplikace pro práci s PDF dokumenty.  
-Uživatel nahraje PDF a může se na něj ptát přirozeným jazykem.
+Jednoduchá AI aplikace pro práci s PDF dokumenty.
+Uživatel nahraje dokument a může se na něj ptát pomocí přirozeného jazyka.
 
-Projekt využívá princip **RAG (Retrieval-Augmented Generation)**:
-- dokument se načte a rozdělí na menší části,
-- části se převedou na embeddingy,
-- embeddingy se uloží do FAISS indexu,
-- při dotazu se najdou relevantní úryvky,
-- ty se předají lokálnímu LLM přes Ollama.
+Projekt využívá lokální AI modely přes Ollama a implementuje princip RAG (Retrieval-Augmented Generation).
 
-## Funkce
+🎯 Use Case
 
-- nahrání PDF dokumentu
-- dotazy nad obsahem dokumentu
-- vyhledání relevantních částí textu
-- odpovědi generované lokálním LLM
-- zobrazení použitých zdrojových úryvků
+Tento nástroj simuluje interní AI řešení ve firmě nebo organizaci, kde uživatelé potřebují rychle vyhledávat informace v dokumentech (např. směrnice, manuály, pravidla).
 
-## Použité technologie
+Cílem je:
 
-- Python
-- Streamlit
-- FAISS
-- Ollama
-- llama3.2
-- nomic-embed-text
-- PyPDF
-- requests
-- numpy
+zrychlit práci s dokumenty
+snížit manuální hledání
+zpřístupnit informace pomocí přirozeného jazyka
+🚀 Funkce
+📄 nahrání PDF dokumentu
+🔍 vyhledávání relevantních částí textu
+🤖 odpovědi pomocí lokálního LLM (Ollama)
+📚 zobrazení zdrojových úryvků
+⚡ rychlé vyhledávání pomocí FAISS
+🧠 Jak projekt funguje
+PDF se načte pomocí pypdf
+text se rozdělí na menší části (chunks)
+každá část se převede na embedding
+embeddingy se uloží do FAISS indexu
+při dotazu se najdou nejrelevantnější části dokumentu
+tyto části se použijí jako kontext pro odpověď modelu
+🧩 Co je RAG
 
-## Jak projekt funguje
+RAG (Retrieval-Augmented Generation) je přístup, kdy se modelu neposílá celý dokument, ale pouze relevantní části nalezené pomocí vyhledávání.
 
-1. PDF se načte pomocí `pypdf`
-2. text se rozdělí na menší části
-3. každá část se převede na embedding
-4. embeddingy se uloží do FAISS
-5. při dotazu se najdou nejrelevantnější části dokumentu
-6. tyto části se použijí jako kontext pro odpověď modelu
+Výhody:
 
-## Instalace
+přesnější odpovědi
+lepší práce s většími dokumenty
+větší kontrola nad zdroji informací
+🛠️ Technologie
+Python
+Streamlit
+FAISS
+Ollama
+llama3.2
+nomic-embed-text
+PyPDF
+requests
+numpy
+▶️ Instalace
 
 Nejprve vytvoř a aktivuj virtuální prostředí.
 
-### Windows
-```bash
+Windows
 python -m venv venv
 venv\Scripts\activate
 
-Potom nainstaluj závislosti:
+Poté nainstaluj závislosti:
 
 pip install -r requirements.txt
-Instalace Ollama
+🤖 Instalace Ollama
 
 Stáhni a nainstaluj Ollamu:
 
@@ -61,49 +67,30 @@ Stáhni potřebné modely:
 
 ollama pull llama3.2
 ollama pull nomic-embed-text
-Spuštění aplikace
+▶️ Spuštění aplikace
 
-Nejprve se ujisti, že běží Ollama.
-
-Potom spusť:
+Ujisti se, že běží Ollama, poté spusť:
 
 streamlit run app.py
 
-Aplikace poběží typicky na:
+Aplikace poběží na:
 
 http://localhost:8501
-Ukázka použití
+💡 Ukázka použití
 
 Příklady dotazů:
 
 O čem je dokument?
-Shrň hlavní body.
-Jaké jsou podmínky nebo pravidla?
-Co dokument říká o konkrétní disciplíně nebo tématu?
-Možná vylepšení
+Shrň hlavní body
+Jaké jsou podmínky?
+Co dokument říká o konkrétním tématu?
+🔮 Možná rozšíření
 historie chatu
-více dokumentů najednou
+práce s více dokumenty
 přesnější chunking
-citace se stránkou dokumentu
-nasazení online
-filtrování a správa dokumentů
-Proč jsem projekt vytvořil
+citace včetně čísla stránky
+deployment (cloud)
+lepší UI
+👨‍💻 Autor
 
-Cílem bylo postavit jednoduchý interní AI nástroj pro práci s dokumenty, který ukazuje praktické použití:
-
-LLM
-RAG
-vyhledávání v datech
-automatizaci práce s dokumenty
-Autor
-
-Tomáš Rogan
-
-
-## Pak udělej commit
-Ve VS Code terminálu:
-
-```bash
-git add README.md
-git commit -m "Add project README"
-git push
+Rogan
